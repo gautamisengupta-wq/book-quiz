@@ -10,11 +10,14 @@ let totalQuestions = 3;
 function answer(type) {
     score[type]++;
 
-    document.getElementById("q" + current).classList.add("hidden");
+    // Hide current question
+    document.getElementById("q" + current).style.display = "none";
+
     current++;
 
+    // Show next question OR result
     if (current <= totalQuestions) {
-        document.getElementById("q" + current).classList.remove("hidden");
+        document.getElementById("q" + current).style.display = "block";
     } else {
         showResult();
     }
@@ -24,15 +27,23 @@ function showResult() {
     let result = "";
 
     if (score.fantasy > score.romance && score.fantasy > score.mystery) {
-        result = "You should read: Harry Potter";
+        result = "📚 Recommendation: Harry Potter";
     } 
     else if (score.romance > score.mystery) {
-        result = "You should read: Pride and Prejudice";
+        result = "📚 Recommendation: Pride and Prejudice";
     } 
     else {
-        result = "You should read: Sherlock Holmes";
+        result = "📚 Recommendation: Sherlock Holmes";
     }
 
-    document.getElementById("result").innerText = result;
-    document.getElementById("restart").classList.remove("hidden");
+    // Show result clearly
+    let resultBox = document.getElementById("result");
+    resultBox.style.display = "block";
+    resultBox.innerText = result;
+
+    // Show restart button if you have one
+    let restartBtn = document.getElementById("restart");
+    if (restartBtn) {
+        restartBtn.style.display = "block";
+    }
 }
