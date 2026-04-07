@@ -1,6 +1,6 @@
 body {
     background: linear-gradient(to right, #fbc2eb, #a6c1ee);
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial;
     text-align: center;
 }
 
@@ -8,28 +8,6 @@ body {
     background: white;
     padding: 30px;
     margin: 100px auto;
-    width: 320px;
+    width: 300px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 80%;
-    border: none;
-    border-radius: 15px;
-    background: #ff9a9e;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #fad0c4;
-}
-
-.hidden {
-    display: none;
 }
