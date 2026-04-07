@@ -2,11 +2,52 @@
 <html>
 <head>
     <title>Book Recommender</title>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            background: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+
+        .top-bar {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .container {
+            background: #1e1e1e;
+            padding: 30px;
+            margin: 100px auto;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            border: none;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- Top corner name -->
 <div class="top-bar">
     Gautami Sengupta | Roll No. 375
 </div>
@@ -15,7 +56,7 @@
     <h1>📚 Book Recommendation Quiz</h1>
 
     <!-- Question 1 -->
-    <div class="question" id="q1">
+    <div id="q1">
         <p>Pick a vibe:</p>
         <button onclick="answer('fantasy')">Magical</button>
         <button onclick="answer('romance')">Emotional</button>
@@ -23,7 +64,7 @@
     </div>
 
     <!-- Question 2 -->
-    <div class="question hidden" id="q2">
+    <div id="q2" style="display:none;">
         <p>Preferred setting:</p>
         <button onclick="answer('fantasy')">Fantasy world</button>
         <button onclick="answer('romance')">Real life</button>
@@ -31,11 +72,63 @@
     </div>
 
     <!-- Question 3 -->
-    <div class="question hidden" id="q3">
+    <div id="q3" style="display:none;">
         <p>Choose a pace:</p>
-        <button onclick="answer('fantasy')">Adventuro
+        <button onclick="answer('fantasy')">Adventurous</button>
+        <button onclick="answer('romance')">Slow & deep</button>
+        <button onclick="answer('mystery')">Fast & intense</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Result -->
+    <h2 id="result" style="display:none;"></h2>
+
+    <!-- Restart -->
+    <button id="restart" style="display:none;" onclick="location.reload()">
+        Restart Quiz
+    </button>
+</div>
+
+<script>
+let score = {
+    fantasy: 0,
+    romance: 0,
+    mystery: 0
+};
+
+let current = 1;
+let totalQuestions = 3;
+
+function answer(type) {
+    score[type]++;
+
+    document.getElementById("q" + current).style.display = "none";
+    current++;
+
+    if (current <= totalQuestions) {
+        document.getElementById("q" + current).style.display = "block";
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    let result = "";
+
+    if (score.fantasy > score.romance && score.fantasy > score.mystery) {
+        result = "📚 Recommendation: Harry Potter";
+    } 
+    else if (score.romance > score.mystery) {
+        result = "📚 Recommendation: Pride and Prejudice";
+    } 
+    else {
+        result = "📚 Recommendation: Sherlock Holmes";
+    }
+
+    document.getElementById("result").innerText = result;
+    document.getElementById("result").style.display = "block";
+    document.getElementById("restart").style.display = "block";
+}
+</script>
+
 </body>
 </html>
