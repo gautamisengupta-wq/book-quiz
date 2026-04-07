@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Quiz ✨</title>
+    <title>Book Recommender</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>✨ Find Your Perfect Book ✨</h1>
-
-    <p>Choose a vibe:</p>
-
-    <button onclick="answer('fantasy')">🌙 Magical</button>
-    <button onclick="answer('romance')">💖 Emotional</button>
-    <button onclick="answer('mystery')">🔍 Dark</button>
-
-    <h2 id="result"></h2>
+<!-- Top corner name -->
+<div class="top-bar">
+    Gautami Sengupta | Roll No. 375
 </div>
 
-<script src="script.js"></script>
+<div class="container">
+    <h1>📚 Book Recommendation Quiz</h1>
 
-</body>
-</html>
+    <!-- Question 1 -->
+    <div class="question" id="q1">
+        <p>Pick a vibe:</p>
+        <button onclick="answer('fantasy')">Magical</button>
+        <button onclick="answer('romance')">Emotional</button>
+        <button onclick="answer('mystery')">Dark</button>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question hidden" id="q2">
+        <p>Preferred setting:</p>
+        <button onclick="answer('fantasy')">Fantasy world</button>
+        <button onclick="answer('romance')">Real life</button>
+        <button onclick="answer('mystery')">Crime city</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question hidden" id="q3">
+        <p>Choose a pace:</p>
+        <button onclick="answer('fantasy')">Adventuro
